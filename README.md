@@ -43,3 +43,8 @@ The stuff of this repository needs some plugins below.
 - Create the vim backup directory via: `$ mkdir ~/.vimbackup`
 - (Optional) You can set your local git configuration into `~/.gitconfig.local` file.
 
+## Commands
+### Markdown Preview (Blowser): `\r`
+  + Prerequisites: [Configure vimproc](https://github.com/Shougo/vimproc.vim) 
+  + __NOTE:__ This feature is tested with kaoriya-gvim-win64 and MacVim
+  + __CAUTION:__ Currently, this configuration not works correctly in cygwin-vim environment 

@@ -60,19 +60,27 @@ set wildmode=list,full
 set noswapfile
 set backupdir=$HOME/.vimbackup
 
-"if has("syntax")
-"  syntax on
-"endif
+if has("syntax")
+  syntax on
+endif
 
 filetype on
 
 " -------------------- NeoBundle -------------------------- "
 
+if !1 | finish | endif
+
 if has('vim_starting')
-  set runtimepath+=~/.vim/bundle/neobundle.vim
+  if &compatible
+   set nocompatible               " Be iMproved
+  endif
+
+  " Required:
+  set runtimepath+=~/.vim/bundle/neobundle.vim/
 endif
 
-call neobundle#rc(expand('~/.vim/bundle/'))
+" Required:
+call neobundle#begin(expand('~/.vim/bundle/'))
 
 let g:neobundle_default_git_protocol='https' "for Proxy Environment
 
@@ -115,6 +123,8 @@ let g:neobundle_default_git_protocol='https' "for Proxy Environment
 
 " Added For Clipboard use
   NeoBundle 'kana/vim-fakeclip'
+
+call neobundle#end()
 
 filetype plugin indent on     " required!
 NeoBundleCheck
