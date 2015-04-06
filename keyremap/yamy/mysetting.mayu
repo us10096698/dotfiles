@@ -1,0 +1,14 @@
+# Online-Manual: http://mayu.sourceforge.net/mayu/doc/README-ja.html
+# http://rcmdnk.github.io/blog/2013/06/20/computer-mac-keyremap4macbook-vim/#windowsyamyime
+# http://rcmdnk.github.io/blog/2013/03/16/yamy4/
+
+include "109.mayu"
+
+keyseq $exit = 半角/全角 Esc
+
+window Cygwin /cygwin/ : Global
+  key IL-~IC-Esc = $ToggleIME Esc # Make IME off, Exit insert mode
+  key IC-Esc = Esc # Stop inserting
+  # key IL-Esc = $ToggleIME Esc # Make IME off, Exit insert mode
+  # key IC-Esc = $ToggleIME Esc # Make IME off, Exit insert mode
+

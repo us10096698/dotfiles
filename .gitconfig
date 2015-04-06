@@ -1,0 +1,20 @@
+# Global settings for git
+
+[include]
+	# Local configuration
+	path=.gitconfig.local
+
+[color]
+	ui = auto
+
+[alias]
+	ci=commit
+	st=status
+	undo=reset --hard
+
+[core]
+	autocrlf = input
+  filemode = false
+
+[http]
+  sslverify = false
