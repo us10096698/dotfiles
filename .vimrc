@@ -1,4 +1,5 @@
 set nocompatible
+set noundofile
 
 "------------------Encodings------------------"
 set encoding=utf-8
@@ -46,9 +47,6 @@ set hlsearch
 
 " -------------------- AutoCommands -------------------------"
 
-" Set filetype ( *.txt -> markdown format )
-autocmd BufNewFile,BufRead *.txt set filetype=markdown
-autocmd BufNewFile,BufRead *.md set filetype=markdown
 autocmd BufNewFile,BufRead *.gradle set filetype=groovy
 
 " -------------------- Complementation ----------------------"
@@ -84,7 +82,7 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 
 let g:neobundle_default_git_protocol='https' "for Proxy Environment
 
-  NeoBundleFetch 'Shougo/neobundle.vim'
+ NeoBundleFetch 'Shougo/neobundle.vim'
  NeoBundle 'Shougo/vimproc.vim', {
 \ 'build' : {
 \     'windows' : 'tools\\update-dll-mingw',
@@ -102,26 +100,19 @@ let g:neobundle_default_git_protocol='https' "for Proxy Environment
   NeoBundle 'Shougo/neosnippet'
   NeoBundle 'Shougo/neosnippet-snippets'
 
-  "NeoBundle 'jpalardy/vim-slime'
-  "NeoBundle 'scrooloose/syntastic'
-  "NeoBundle 'https://bitbucket.org/kovisoft/slimv'
-
-" Added For Ruby Programming
-  "NeoBundle 'alpaca-tc/alpaca_tags'
+" Ruby
   NeoBundle 'AndrewRadev/switch.vim'
-  "NeoBundle 'bbatsov/rubocop'
   NeoBundle 'tpope/vim-endwise'
 
-" Added For Markdown Syntax Highlight and Browser Preview
+" Markdown
   NeoBundle 'tyru/open-browser.vim'
-  NeoBundle 'thinca/vim-quickrun'
-  NeoBundle 'mattn/webapi-vim'
-  NeoBundle 'superbrothers/vim-quickrun-markdown-gfm'
+  NeoBundle 'kannokanno/previm'
+  NeoBundle 'plasticboy/vim-markdown'
 
-" Added For Solarized Color Scheme
+" Solarized Color Scheme
   NeoBundle 'altercation/vim-colors-solarized'
 
-" Added For Clipboard use
+" Clipboard use
   NeoBundle 'kana/vim-fakeclip'
 
 call neobundle#end()
@@ -129,14 +120,14 @@ call neobundle#end()
 filetype plugin indent on     " required!
 NeoBundleCheck
 
-" -------------------- QuickRun ----------------------------- "
-let g:quickrun_config = {
-  \   'markdown': {
-  \     'type': 'markdown/gfm',
-  \     'outputter': 'browser'
-  \   }
-\ }
+" ------------------- Markdown Preview ---------------------
 
+augroup PrevimSettings
+  autocmd!
+  autocmd BufRead,BufNewFile *.{md,mdwn,mkd,mkdn,mark*} set filetype=markdown
+augroup END
+
+nnoremap <silent> <C-p> :PrevimOpen<CR>
 
 " -------------------- NeoComplCache ------------------------ "
 let g:neocomplcache_enable_at_startup = 1

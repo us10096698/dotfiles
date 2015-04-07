@@ -22,10 +22,11 @@ The stuff of this repository needs some plugins below.
 
 - Create the symbolic links into your home directory.
 
-  + Linux environment:
+  + Mac / Linux environment:
 
   ```
   $ cd ~
+  $ ln -s path/to/repository/dotfiles/.vim .vim
   $ ln -s path/to/repository/dotfiles/.vimrc .vimrc
   $ ln -s path/to/repository/dotfiles/.gvimrc .gvimrc
   $ ln -s path/to/repository/dotfiles/.gitconfig .gitconfig
@@ -34,17 +35,21 @@ The stuff of this repository needs some plugins below.
 
   ```
   > cd ~
+  > mklink /d .vim /path/to/repository/dotfiles/.vim
   > mklink .vimrc /path/to/repository/dotfiles/.vimrc
   > mklink .gvimrc /path/to/repository/dotfiles/.gvimrc
-  > mklink /d .vim /path/to/repository/dotfiles/.vim
-  > mklink .vimrc /path/to/repository/dotfiles/.vimrc .vimrc
+  > mklink .gitconfig /path/to/repository/dotfiles/.gitconfig
   ```
 
-- Create the vim backup directory via: `$ mkdir ~/.vimbackup`
-- (Optional) You can set your local git configuration into `~/.gitconfig.local` file.
+- Create the vim backup directory: `$ mkdir ~/.vimbackup`
+- (Optional) Create local git configuration file: `~/.gitconfig.local`
 
 ## Commands
-### Markdown Preview (Blowser): `\r`
-  + Prerequisites: [Configure vimproc](https://github.com/Shougo/vimproc.vim) 
-  + __NOTE:__ This feature is tested with kaoriya-gvim-win64 and MacVim
-  + __CAUTION:__ Currently, this configuration not works correctly in cygwin-vim environment 
++ Markdown preview (Blowser): `Ctrl`+`P`
+  * [Ref](http://dackdive.hateblo.jp/entry/2014/09/11/213455)
++ Foldings
+  * Open folding under cursor: `zo`
+  * Open all foldings: `zO`
+  * Close folding under cursor : `zc`
+  * Clone all foldings: `zC`
+
