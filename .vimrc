@@ -99,6 +99,7 @@ let g:neobundle_default_git_protocol='https' "for Proxy Environment
   NeoBundle 'Shougo/neocomplcache'
   NeoBundle 'Shougo/neosnippet'
   NeoBundle 'Shougo/neosnippet-snippets'
+  NeoBundle 'us10096698/snippets'
 
 " Ruby
   NeoBundle 'AndrewRadev/switch.vim'
@@ -138,6 +139,8 @@ autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 
 " -------------------- NeoSnippet -------------------------- "
+let g:neosnippet#snippets_directory = '~/.vim/bundle/snippets/snip'
+
 " Plugin key-mappings.
 imap <C-k>     <Plug>(neosnippet_expand_or_jump)
 smap <C-k>     <Plug>(neosnippet_expand_or_jump)
