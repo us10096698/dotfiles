@@ -4,34 +4,35 @@ cd ~/.dotfiles
 
 git submodule init
 git submodule update
+cp custom/* .bash_it/custom/.
 
-echo '* Backing up old files'
+if [ -d ~/.bash_it ]; then
+  mv ~/.bash_it ~/.bash_it.bak
+fi
 
 if [ -d ~/.vim ]; then
-  mv ~/.vim ~/.vim.org
+  mv ~/.vim ~/.vim.bak
 fi
 
 if [ -f ~/.vimrc ]; then
-  mv ~/.vimrc ~/.vimrc.org
+  mv ~/.vimrc ~/.vimrc.bak
 fi
 
 if [ -f ~/.gvimrc ]; then
-  mv ~/.gvimrc ~/.gvimrc.org
+  mv ~/.gvimrc ~/.gvimrc.bak
 fi
 
 if [ -f ~/.gitconfig ]; then
-  mv ~/.gitconfig ~/.gitconfig.org
+  mv ~/.gitconfig ~/.gitconfig.bak
 fi
 
-echo '* Creating symbolic links'
-
 cd ~
+ln -s .dotfiles/.bash_it .bash_it
 ln -s .dotfiles/.vim .vim
 ln -s .dotfiles/.vimrc .vimrc
 ln -s .dotfiles/.gvimrc .gvimrc
 ln -s .dotfiles/.gitconfig .gitconfig
 
-echo '* Creating .vimbackup dir'
 mkdir ~/.vimbackup
+sh .bash_it/install.sh
 
-echo '* All dotfiles were installed correctly.'

@@ -8,8 +8,8 @@ This repository includes my dotfiles.
 
 1. `$ git clone https://github.com/us10096698/dotfiles ~/.dotfiles`
 2. Invoke initialization script
-  - Linux: `~/.dotfiles/bin/install.sh`
-  - Windows: `~/.dotfiles/bin/install.bat`
+  - Linux: `~/.dotfiles/scripts/install.sh`
+  - Windows: `~/.dotfiles/scripts/install.bat`
     * __CAUTION__: This bat file does not backup the original dotfiles
 3. (Optional) Create local git configuration file: `~/.gitconfig.local`
 
