@@ -12,6 +12,10 @@ ca save browse confirm saveas
 " IME switch via ESC key
 inoremap <ESC> <ESC>:set iminsert=0<CR>
 
+if has('gui_macvim')
+  set guifont=Menlo:h16
+endif
+
 if has("syntax")
 	syntax on
 endif
@@ -46,8 +50,8 @@ colorscheme solarized
 "-------------------- Transparency Settings ------------
 
 if has('mac')
-  autocmd FocusGained * set transparency=20
-  autocmd FocusLost * set transparency=40
+  autocmd FocusGained * set transparency=5
+  autocmd FocusLost * set transparency=15
 else
   autocmd FocusGained * set transparency=220
   autocmd FocusLost * set transparency=200

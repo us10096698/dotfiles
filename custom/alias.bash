@@ -1,7 +1,3 @@
-#!/usr/bin/env bash
-#
-# This is an example file. Don't use this for your custom scripts. Instead, create another file within the
-# custom directory.
-
 alias vi=vim
+alias ls='gls --color=auto'
 alias ll='ls -la'

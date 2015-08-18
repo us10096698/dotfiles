@@ -15,26 +15,21 @@ set shiftwidth=2
 "set softtabstop=2
 set autoindent
 set smartindent
-
 set clipboard=unnamed
-
 set ruler
 set wrap
 
 "set list "Show Invisible Characters
-set listchars=trail:-,tab:>-
+"set listchars=trail:-,tab:>-
 
 set showmatch
 
 " b:backspace, s:space, <:<Left> >:<Right>
 set whichwrap=b,s,<,>
-
 set textwidth=0 "Disable Automatic Carrier Return
 
 " -------------------- StatusLine ---------------------------
-
 set laststatus=2 "Always Show
-
 set statusline=%<%f\ %m%r%h%w
 set statusline+=%{'['.(&fenc!=''?&fenc:&enc).']['.&fileformat.']'}
 set statusline+=%=%l/%L,%c%V%8P
@@ -46,15 +41,12 @@ set wrapscan
 set hlsearch
 
 " -------------------- AutoCommands -------------------------"
-
 autocmd BufNewFile,BufRead *.gradle set filetype=groovy
 
 " -------------------- Complementation ----------------------"
-
 set wildmode=list,full
 
 " -------------------- Backups ------------------------------- "
-
 set noswapfile
 set backupdir=$HOME/.vimbackup
 
@@ -65,7 +57,6 @@ endif
 filetype on
 
 " -------------------- NeoBundle -------------------------- "
-
 if !1 | finish | endif
 
 if has('vim_starting')
@@ -159,6 +150,7 @@ if has('conceal')
 endif
 
 " -------------------- Environment --------------------------"
+colorscheme solarized 
 
 " Copy to Clipboard (for Cygwin Vim)
 "  noremap :cb :w !cat > /dev/clipboard

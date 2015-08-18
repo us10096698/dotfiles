@@ -1,0 +1,1 @@
+eval $(gdircolors ~/.dircolors)
