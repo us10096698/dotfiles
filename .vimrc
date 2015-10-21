@@ -32,6 +32,7 @@ set nocompatible
     set smartcase
     set wrapscan
     set hlsearch
+    set incsearch
 
   " Filetype
     autocmd BufNewFile,BufRead *.gradle set filetype=groovy
@@ -46,7 +47,7 @@ set nocompatible
     set noundofile
     set noswapfile
     "set backupdir=$HOME/.vimbackup
-
+  
 " ---------------------------------------
 
   if has("syntax")
@@ -88,6 +89,7 @@ set nocompatible
   " Misc
     NeoBundle 'Shougo/unite.vim'
     NeoBundle 'Shougo/neomru.vim' "Necessary for :Unite file_mru
+    NeoBundle 'Shougo/vimfiler.vim'
     NeoBundle 'scrooloose/nerdcommenter'
     NeoBundle 'mattn/emmet-vim'
     NeoBundle 'altercation/vim-colors-solarized'
@@ -108,11 +110,21 @@ set nocompatible
   
   " let g:unite_enable_start_insert = 1
   let g:unite_source_history_yank_enable = 1
+  let g:unite_source_file_mru_filename_format = ''
   let g:unite_source_file_mru_limit = 200
   
   nnoremap <silent> [unite]c :<C-u>UniteWithCurrentDir -buffer-name=files buffer file_mru bookmark file<CR>
   nnoremap <silent> [unite]y :<C-u>Unite history/yank<CR>
   nnoremap <silent> [unite]r :<C-u>Unite -buffer-name=register register<CR>
+  nnoremap <silent> [unite]a :<C-u>UniteBookmarkAdd<CR>
+
+" -------------------- VimFiler -----------------------------
+  let g:vimfiler_as_default_explorer = 1
+  nnoremap [filer] <Nop>
+  nmap <Space>f [filer]
+  
+  nnoremap <silent> [filer]i :<C-u>VimFilerBufferDir -split -simple -winwidth=35 -no-quit<CR>
+  nnoremap <silent> [filer]e :<C-u>VimFilerBufferDir -quit<CR>
 
 " -------------------- NerdCommenter ------------------------
   let NERDSpaceDelims = 1
@@ -156,7 +168,7 @@ set nocompatible
   endif
 
 " -------------------- Environment --------------------------
-  " colorscheme solarized 
+  colorscheme solarized 
   
   " Copy to Clipboard (for Cygwin Vim)
   "  noremap :cb :w !cat > /dev/clipboard
