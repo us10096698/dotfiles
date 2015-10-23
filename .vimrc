@@ -35,8 +35,12 @@ set nocompatible
     set incsearch
 
   " Filetype
-    autocmd BufNewFile,BufRead *.gradle set filetype=groovy
-  
+    augroup ftype
+      autocmd!
+      autocmd BufRead,BufNewFile *.{md,mdwn,mkd,mkdn,mark*} set filetype=markdown
+      autocmd BufNewFile,BufRead *.gradle set filetype=groovy
+    augroup END
+
   " StatusLine
     set laststatus=2 "Always Show
     set statusline=%<%f\ %m%r%h%w
@@ -75,11 +79,10 @@ set nocompatible
   \    },
   \ }
   
-  " NeoSnippets
+  " Snippets
     NeoBundle 'Shougo/neocomplcache'
     NeoBundle 'Shougo/neosnippet'
     NeoBundle 'Shougo/neosnippet-snippets'
-    NeoBundle 'us10096698/snippets'
   
   " Markdown
     NeoBundle 'tyru/open-browser.vim'
@@ -105,21 +108,26 @@ set nocompatible
   NeoBundleCheck
 
 " ---------------------- Unite ------------------------------
-  nnoremap [unite] <Nop>
-  nmap <Space>u [unite]
-  
   " let g:unite_enable_start_insert = 1
   let g:unite_source_history_yank_enable = 1
   let g:unite_source_file_mru_filename_format = ''
   let g:unite_source_file_mru_limit = 200
   
-  nnoremap <silent> [unite]c :<C-u>UniteWithCurrentDir -buffer-name=files buffer file_mru bookmark file<CR>
+  nnoremap [unite] <Nop>
+  nmap <Space>u [unite]
+  
+  nnoremap <silent> [unite]f :<C-u>UniteWithCurrentDir -buffer-name=files buffer file_mru bookmark file<CR>
   nnoremap <silent> [unite]y :<C-u>Unite history/yank<CR>
   nnoremap <silent> [unite]r :<C-u>Unite -buffer-name=register register<CR>
+  nnoremap <silent> [unite]b :<C-u>Unite buffer<CR>
+  nnoremap <silent> [unite]m :<C-u>Unite file_mru<CR>
+  nnoremap <silent> [unite]c :<C-u>Unite bookmark<CR>
   nnoremap <silent> [unite]a :<C-u>UniteBookmarkAdd<CR>
 
 " -------------------- VimFiler -----------------------------
   let g:vimfiler_as_default_explorer = 1
+  let g:vimfiler_safe_mode_by_default = 0
+  
   nnoremap [filer] <Nop>
   nmap <Space>f [filer]
   
@@ -131,41 +139,29 @@ set nocompatible
   nmap ,, <Plug>NERDCommenterToggle
   vmap ,, <Plug>NERDCommenterToggle
 
-" -------------------- Markdown Preview ---------------------
-  augroup PrevimSettings
-    autocmd!
-    autocmd BufRead,BufNewFile *.{md,mdwn,mkd,mkdn,mark*} set filetype=markdown
-  augroup END
-
+" -------------------- Markdown ---------------------
+  let g:vim_markdown_folding_disabled = 1
   nnoremap <silent> <C-p> :PrevimOpen<CR>
 
 " -------------------- NeoComplCache ------------------------
   let g:neocomplcache_enable_at_startup = 1
 
-  " Enable omni completion. Not required if they are already set elsewhere in .vimrc
   autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
   autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
   autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 
 " -------------------- NeoSnippet --------------------------
-  let g:neosnippet#snippets_directory = '~/.vim/bundle/snippets/snip'
+  let g:neosnippet#snippets_directory = '~/.dotfiles/snip'
   
-  " Plugin key-mappings.
   imap <C-k> <Plug>(neosnippet_expand_or_jump)
   smap <C-k> <Plug>(neosnippet_expand_or_jump)
   xmap <C-k> <Plug>(neosnippet_expand_target)
-  
-  " SuperTab like snippets behavior.
+
   imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
   \ "\<Plug>(neosnippet_expand_or_jump)"
   \: pumvisible() ? "\<C-n>" : "\<TAB>"
   smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
   \ "\<Plug>(neosnippet_expand_or_jump)": "\<TAB>"
-  
-  " For snippet_complete marker.
-  if has('conceal')
-    set conceallevel=2 concealcursor=i
-  endif
 
 " -------------------- Environment --------------------------
   colorscheme solarized 

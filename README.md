@@ -13,7 +13,7 @@ This repository includes my dotfiles.
     * __CAUTION__: This bat file does not backup the original dotfiles
 3. (Optional) Create local git configuration file: `~/.gitconfig.local`
 
-## Commands
+## shortcuts cheatsheet
 + Markdown preview (Browser): `Ctrl`+`P`
   * [Ref](http://dackdive.hateblo.jp/entry/2014/09/11/213455)
 + Foldings
@@ -21,4 +21,8 @@ This repository includes my dotfiles.
   * Open all foldings: `zO`
   * Close folding under cursor : `zc`
   * Clone all foldings: `zC`
++ Comment out (nerdcommenter)
+  * Toggle commentout : ',,'
++ Emmet
+  * <C-y>,
 
