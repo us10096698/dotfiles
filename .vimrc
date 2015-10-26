@@ -22,8 +22,7 @@ set nocompatible
     set textwidth=0 "Disable Automatic Carrier Return
     set hidden
     set wildmode=list,full "completion
-    set whichwrap=b,s,<,>
-      " b:backspace, s:space, <:<Left> >:<Right>
+    set whichwrap=b,s,<,> " b:backspace, s:space, <:<Left> >:<Right>
     "set list "Show Invisible Characters
     "set listchars=trail:-,tab:>-
   
@@ -33,6 +32,10 @@ set nocompatible
     set wrapscan
     set hlsearch
     set incsearch
+
+  " Grep (Git Grep) + QuickFix
+    set grepprg=git\ grep\ --no-index\ -I\ --line-number
+    autocmd QuickFixCmdPost *grep* cwindow
 
   " Filetype
     augroup ftype
@@ -96,6 +99,7 @@ set nocompatible
     NeoBundle 'scrooloose/nerdcommenter'
     NeoBundle 'mattn/emmet-vim'
     NeoBundle 'altercation/vim-colors-solarized'
+    NeoBundle 'scrooloose/syntastic.git'
     " NeoBundle 'kana/vim-fakeclip'
   
   " Ruby
@@ -138,6 +142,11 @@ set nocompatible
   let NERDSpaceDelims = 1
   nmap ,, <Plug>NERDCommenterToggle
   vmap ,, <Plug>NERDCommenterToggle
+
+" -------------------- Syntastic -------------------
+" To work this, you need to install `eslint` globally
+
+  let g:syntastic_javascript_checkers=['eslint']
 
 " -------------------- Markdown ---------------------
   let g:vim_markdown_folding_disabled = 1
