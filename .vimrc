@@ -140,12 +140,15 @@ set nocompatible
   nnoremap <silent> [filer]e :<C-u>VimFilerBufferDir -quit<CR>
 
 " -------------------- fugitive ----------------------------
+  set diffopt+=vertical
+
   nnoremap [fugitive] <Nop>
   nmap <Space>g [fugitive]
 
   nnoremap <silent> [fugitive]s :<C-u>Gstatus<CR>
   nnoremap <silent> [fugitive]w :<C-u>Gwrite<CR>
   nnoremap <silent> [fugitive]r :<C-u>Gread<CR>
+  nnoremap <silent> [fugitive]d :<C-u>Gdiff<CR>
   nnoremap <silent> [fugitive]c :<C-u>Gcommit<CR>
 
 " -------------------- NerdCommenter ------------------------
