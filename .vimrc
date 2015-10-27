@@ -100,6 +100,7 @@ set nocompatible
     NeoBundle 'mattn/emmet-vim'
     NeoBundle 'altercation/vim-colors-solarized'
     NeoBundle 'scrooloose/syntastic.git'
+    NeoBundle 'tpope/vim-fugitive'
     " NeoBundle 'kana/vim-fakeclip'
   
   " Ruby
@@ -137,6 +138,15 @@ set nocompatible
   
   nnoremap <silent> [filer]i :<C-u>VimFilerBufferDir -split -simple -winwidth=35 -no-quit<CR>
   nnoremap <silent> [filer]e :<C-u>VimFilerBufferDir -quit<CR>
+
+" -------------------- fugitive ----------------------------
+  nnoremap [fugitive] <Nop>
+  nmap <Space>g [fugitive]
+
+  nnoremap <silent> [fugitive]s :<C-u>Gstatus<CR>
+  nnoremap <silent> [fugitive]w :<C-u>Gwrite<CR>
+  nnoremap <silent> [fugitive]r :<C-u>Gread<CR>
+  nnoremap <silent> [fugitive]c :<C-u>Gcommit<CR>
 
 " -------------------- NerdCommenter ------------------------
   let NERDSpaceDelims = 1
