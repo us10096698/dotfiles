@@ -2,19 +2,29 @@
 
 [include]
 	# Local configuration
-	path=.gitconfig.local
+	path = .gitconfig.local
 
 [color]
 	ui = auto
 
 [alias]
-	ci=commit
-	st=status
-	undo=reset --hard
+  alias = config --get-regexp \"alias.*\"
+	ci = commit
+	st = status
+  br = branch
+  co = checkout 
+  ls = ls-files
+	undo = reset --hard
+  history = log --date=short --pretty=format:'%cd %C(yellow)%h %C(white) %s %C(green)@%cn' 
+  graph = log --graph --date=short --decorate=short --pretty=format:'%Cgreen%h %Creset%cd %Cblue%cn %Cred%d %Creset%s'
 
 [core]
 	autocrlf = input
   filemode = false
+  editor = vim
+
+[url "https://"]
+	insteadOf = git://
 
 [http]
   sslverify = false
