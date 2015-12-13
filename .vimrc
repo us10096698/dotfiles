@@ -107,6 +107,7 @@ set nocompatible
     NeoBundle 'w0ng/vim-hybrid'
     NeoBundle 'scrooloose/syntastic'
     NeoBundle 'tpope/vim-fugitive'
+    NeoBundle 'gregsexton/MatchTag'
 
   call neobundle#end()
   
@@ -151,6 +152,7 @@ set nocompatible
   nnoremap <silent> [fugitive]r :<C-u>Gread<CR>
   nnoremap <silent> [fugitive]d :<C-u>Gdiff<CR>
   nnoremap <silent> [fugitive]c :<C-u>Gcommit<CR>
+  nnoremap <silent> [fugitive]b :<C-u>Gblame<CR>
 
 " -------------------- NerdCommenter ------------------------
   let NERDSpaceDelims = 1
