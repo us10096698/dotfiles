@@ -54,6 +54,12 @@ set nocompatible
     set noundofile
     set noswapfile
     "set backupdir=$HOME/.vimbackup
+    
+  " Cursor move
+    inoremap <C-e> <Esc>$
+    inoremap <C-a> <Esc>^
+    noremap <C-e> <Esc>$
+    noremap <C-a> <Esc>^
   
 " ---------------------------------------
 
@@ -98,14 +104,9 @@ set nocompatible
     NeoBundle 'Shougo/vimfiler.vim'
     NeoBundle 'scrooloose/nerdcommenter'
     NeoBundle 'mattn/emmet-vim'
-    NeoBundle 'altercation/vim-colors-solarized'
-    NeoBundle 'scrooloose/syntastic.git'
+    NeoBundle 'w0ng/vim-hybrid'
+    NeoBundle 'scrooloose/syntastic'
     NeoBundle 'tpope/vim-fugitive'
-    " NeoBundle 'kana/vim-fakeclip'
-  
-  " Ruby
-    " NeoBundle 'AndrewRadev/switch.vim'
-    " NeoBundle 'tpope/vim-endwise'
 
   call neobundle#end()
   
@@ -136,7 +137,7 @@ set nocompatible
   nnoremap [filer] <Nop>
   nmap <Space>f [filer]
   
-  nnoremap <silent> [filer]i :<C-u>VimFilerBufferDir -split -simple -winwidth=35 -no-quit<CR>
+  nnoremap <silent> [filer]i :<C-u>VimFilerBufferDir -split -simple -winwidth=25 -no-quit<CR>
   nnoremap <silent> [filer]e :<C-u>VimFilerBufferDir -quit<CR>
 
 " -------------------- fugitive ----------------------------
@@ -173,7 +174,7 @@ set nocompatible
   autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 
 " -------------------- NeoSnippet --------------------------
-  let g:neosnippet#snippets_directory = '~/.dotfiles/snip'
+  " let g:neosnippet#snippets_directory = '~/.dotfiles/snip'
   
   imap <C-k> <Plug>(neosnippet_expand_or_jump)
   smap <C-k> <Plug>(neosnippet_expand_or_jump)
@@ -186,10 +187,6 @@ set nocompatible
   \ "\<Plug>(neosnippet_expand_or_jump)": "\<TAB>"
 
 " -------------------- Environment --------------------------
-  colorscheme solarized 
+  set background=dark
+  colorscheme hybrid
   
-  " Copy to Clipboard (for Cygwin Vim)
-  "  noremap :cb :w !cat > /dev/clipboard
-  " vmap ,y "*y
-  " nmap ,p "*p
-
