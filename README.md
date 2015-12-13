@@ -4,7 +4,11 @@ dotfiles
 ## About
 This repository includes my dotfiles.
 + [Pivotal Tracker project page](https://www.pivotaltracker.com/n/projects/1461018)
-    
+ 
+## Prerequisites
+Some scripts depend on `coreutils` components.
+to install: `$ brew install coreutils`
+
 ## QuickStart
 
 1. `$ git clone https://github.com/us10096698/dotfiles ~/.dotfiles`
