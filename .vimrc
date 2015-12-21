@@ -108,6 +108,8 @@ set nocompatible
     NeoBundle 'scrooloose/syntastic'
     NeoBundle 'tpope/vim-fugitive'
     NeoBundle 'gregsexton/MatchTag'
+    NeoBundle 'terryma/vim-multiple-cursors'
+    NeoBundle 'ConradIrwin/vim-bracketed-paste'
 
   call neobundle#end()
   
