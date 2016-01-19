@@ -110,6 +110,7 @@ set nocompatible
     NeoBundle 'gregsexton/MatchTag'
     NeoBundle 'terryma/vim-multiple-cursors'
     NeoBundle 'ConradIrwin/vim-bracketed-paste'
+    NeoBundle 'rking/ag.vim'
 
   call neobundle#end()
   
@@ -125,13 +126,24 @@ set nocompatible
   nnoremap [unite] <Nop>
   nmap <Space>u [unite]
   
+  nnoremap <silent> [unite]m :<C-u>Unite file_mru<CR>
   nnoremap <silent> [unite]f :<C-u>UniteWithCurrentDir -buffer-name=files buffer file_mru bookmark file<CR>
-  nnoremap <silent> [unite]y :<C-u>Unite history/yank<CR>
+  nnoremap <silent> [unite]g :<C-u>Unite grep:. -buffer-name=search-buffer<CR>
+  nnoremap <silent> [unite]gr :<C-u>UniteResume search-buffer<CR>
+
   nnoremap <silent> [unite]r :<C-u>Unite -buffer-name=register register<CR>
   nnoremap <silent> [unite]b :<C-u>Unite buffer<CR>
-  nnoremap <silent> [unite]m :<C-u>Unite file_mru<CR>
   nnoremap <silent> [unite]c :<C-u>Unite bookmark<CR>
   nnoremap <silent> [unite]a :<C-u>UniteBookmarkAdd<CR>
+
+  " deprecated (http://qiita.com/ryunix/items/b7f2f07dab09a967e67f)
+  " nnoremap <silent> [unite]y :<C-u>Unite history/yank<CR>
+
+  if executable('ag')
+    let g:unite_source_grep_command = 'ag'
+    let g:unite_source_grep_default_opts = '--nogroup --nocolor --column'
+    let g:unite_source_grep_recursive_opt = ''
+  endif
 
 " -------------------- VimFiler -----------------------------
   let g:vimfiler_as_default_explorer = 1
@@ -142,6 +154,7 @@ set nocompatible
   
   nnoremap <silent> [filer]i :<C-u>VimFilerBufferDir -split -simple -winwidth=25 -no-quit<CR>
   nnoremap <silent> [filer]e :<C-u>VimFilerBufferDir -quit<CR>
+  nnoremap <buffer>s         :call vimfiler#mappings#do_action('my_vsplit')<CR>
 
 " -------------------- fugitive ----------------------------
   set diffopt+=vertical
