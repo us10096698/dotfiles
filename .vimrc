@@ -111,6 +111,7 @@ set nocompatible
     NeoBundle 'terryma/vim-multiple-cursors'
     NeoBundle 'ConradIrwin/vim-bracketed-paste'
     NeoBundle 'rking/ag.vim'
+    NeoBundle 'rizzatti/dash.vim'
 
   call neobundle#end()
   
@@ -202,6 +203,11 @@ set nocompatible
   \: pumvisible() ? "\<C-n>" : "\<TAB>"
   smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
   \ "\<Plug>(neosnippet_expand_or_jump)": "\<TAB>"
+
+" -------------------- Dash ---------------------------------
+  nnoremap [dash] <Nop>
+  nmap <Space>d [dash]
+  nnoremap <silent> [dash] :<C-u>Dash<CR>
 
 " -------------------- Environment --------------------------
   set background=dark
