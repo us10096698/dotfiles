@@ -57,15 +57,10 @@ set nocompatible
     " }
   
     " cursor { 
-        inoremap <C-e> <Esc>$
-        inoremap <C-a> <Esc>^
         noremap <C-e> <Esc>$
-        noremap <C-a> <Esc>^
-
-        noremap <C-m> %
-        inoremap <C-m> %
+        noremap mm %
     " }
-  
+
     " syntax {
         if has("syntax")
           syntax on
@@ -121,9 +116,8 @@ set nocompatible
             NeoBundle 'ConradIrwin/vim-bracketed-paste'
             NeoBundle 'rking/ag.vim'
             NeoBundle 'rizzatti/dash.vim'
-            " NeoBundle 'jiangmiao/auto-pairs'
             NeoBundle 'Yggdroot/indentLine'
-            NeoBundleLazy 'junegunn/vim-easy-align'
+            NeoBundle 'junegunn/vim-easy-align'
         " }
     
         call neobundle#end()
@@ -132,30 +126,28 @@ set nocompatible
     " }
     
     " unite {
-        let g:unite_source_history_yank_enable = 1
-        let g:unite_source_file_mru_filename_format = ''
+        " let g:unite_enable_start_insert = 1
         let g:unite_source_file_mru_limit = 200
 
         if executable('ag')
           let g:unite_source_grep_command = 'ag'
           let g:unite_source_grep_default_opts = '--nogroup --nocolor --column'
           let g:unite_source_grep_recursive_opt = ''
+          let g:unite_source_rec_async_command =
+            \ ['ag', '--follow', '--nocolor', '--nogroup',
+            \  '--hidden', '-g', '']
         endif
-        
+
         nnoremap [unite] <Nop>
         nmap <Space>u [unite]
         
         nnoremap <silent> [unite]m :<C-u>Unite file_mru<CR>
-        nnoremap <silent> [unite]f :<C-u>UniteWithCurrentDir -buffer-name=files file_rec<CR>
-        nnoremap <silent> [unite]g :<C-u>Unite grep:. -buffer-name=search-buffer<CR>
-        nnoremap <silent> [unite]gr :<C-u>UniteResume search-buffer<CR>
-        nnoremap <silent> [unite]r :<C-u>Unite -buffer-name=register register<CR>
+        nnoremap <silent> [unite]g :<C-u>Unite -buffer-name=gitfiles file_rec/git<CR>
+        nnoremap <silent> [unite]f :<C-u>Unite -buffer-name=files file_rec/async<CR>
         nnoremap <silent> [unite]b :<C-u>Unite buffer<CR>
-        nnoremap <silent> [unite]c :<C-u>Unite bookmark<CR>
-        nnoremap <silent> [unite]a :<C-u>UniteBookmarkAdd<CR>
-      
-        " deprecated (http://qiita.com/ryunix/items/b7f2f07dab09a967e67f)
-        " nnoremap <silent> [unite]y :<C-u>Unite history/yank<CR>
+        nnoremap <silent> [unite]bm :<C-u>Unite bookmark<CR>
+        nnoremap <silent> [unite]ba :<C-u>UniteBookmarkAdd<CR>
+        nnoremap <silent> [unite]r :<C-u>Unite -buffer-name=register register<CR>
     " }
     
     " VimFiler {
@@ -191,6 +183,7 @@ set nocompatible
     " }
     
     " easyAlign {
+        vmap <CR> <Plug>(EasyAlign)
         xmap ga <Plug>(EasyAlign)
         nmap ga <Plug>(EasyAlign)
     " }
@@ -229,15 +222,15 @@ set nocompatible
     " }
     
     " indentLine {
-        let g:indentLine_char = "┆"
-        let g:indentLine_color_term = 237
+        let g:indentLine_char = "|"
+        let g:indentLine_color_term = 235
     " }
       
     " ag {
         if executable('ag')
-          noremap <C-b> :<C-u>Ag<CR>
-          inoremap <C-b> :<C-u>Ag<CR>
-          vnoremap <C-b> :<C-u>Ag<CR>
+          nnoremap [ag] <Nop>
+          nmap <Space>a [ag]
+          nnoremap <silent> [ag] :<C-u>Ag<CR>
         endif
     " }
     
