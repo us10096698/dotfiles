@@ -116,7 +116,6 @@ set nocompatible
             NeoBundle 'ConradIrwin/vim-bracketed-paste'
             NeoBundle 'rking/ag.vim'
             NeoBundle 'rizzatti/dash.vim'
-            NeoBundle 'Yggdroot/indentLine'
             NeoBundle 'junegunn/vim-easy-align'
         " }
     
@@ -219,11 +218,6 @@ set nocompatible
     " colorscheme {
         set background=dark
         colorscheme hybrid
-    " }
-    
-    " indentLine {
-        let g:indentLine_char = "|"
-        let g:indentLine_color_term = 235
     " }
       
     " ag {
