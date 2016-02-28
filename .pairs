@@ -1,7 +1,7 @@
 # .pairs - configuration for 'git pair'
 pairs:
   # <initials>: <Firstname> <Lastname>[; <email-id>]
-  us: us10096698;us10096698
+  us: Masa; us10096698
 email:
   prefix: pair
   domain: yahoo.com
