@@ -1,3 +1,4 @@
-.vim/bundle/*
-!.vim/bundle/neobundle.vim
+.vim/dein/*
+!.vim/dein/repos/github.com/Shougo/dein.vim
 .vim/.netrwhist
+.bash_it

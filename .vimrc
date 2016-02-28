@@ -50,7 +50,7 @@ set nocompatible
     " }
 
     " statusLine {
-        set laststatus=2 "Always Show
+        set laststatus=2
         set statusline=%<%f\ %m%r%h%w
         set statusline+=%{'['.(&fenc!=''?&fenc:&enc).']['.&fileformat.']'}
         set statusline+=%=%l/%L,%c%V%8P
@@ -69,61 +69,66 @@ set nocompatible
 " }
 
 " plugins {
-    " NeoBundle {
-        if !1 | finish | endif
-        
-        if has('vim_starting')
-          set runtimepath+=~/.vim/bundle/neobundle.vim/
+
+    " dein {
+        if &compatible
+          set nocompatible
         endif
-      
-        call neobundle#begin(expand('~/.vim/bundle/'))
-        let g:neobundle_default_git_protocol='https' "for Proxy Environment
-        
-         NeoBundleFetch 'Shougo/neobundle.vim'
-         NeoBundle 'Shougo/vimproc.vim', {
-            \ 'build' : {
-            \     'windows' : 'tools\\update-dll-mingw',
-            \     'cygwin' : 'make -f make_cygwin.mak',
-            \     'mac' : 'make -f make_mac.mak',
-            \     'linux' : 'make',
-            \     'unix' : 'gmake',
-            \    },
-            \ }
+
+        set runtimepath+=~/.vim/dein/repos/github.com/Shougo/dein.vim
+
+        call dein#begin(expand('~/.vim/dein'))
+  
+        call dein#add('Shougo/dein.vim')
+        call dein#add('Shougo/vimproc.vim', {
+              \ 'build' : {
+              \     'windows' : 'tools\\update-dll-mingw',
+              \     'cygwin' : 'make -f make_cygwin.mak',
+              \     'mac' : 'make -f make_mac.mak',
+              \     'linux' : 'make',
+              \     'unix' : 'gmake',
+              \    },
+              \ })
       
         " Snippets {
-            NeoBundle 'Shougo/neocomplcache'
-            NeoBundle 'Shougo/neosnippet'
-            NeoBundle 'Shougo/neosnippet-snippets'
+            call dein#add('Shougo/neocomplcache')
+            call dein#add('Shougo/neosnippet')
+            call dein#add('Shougo/neosnippet-snippets')
         " }
         
         " markdown {
-            NeoBundle 'tyru/open-browser.vim'
-            NeoBundle 'kannokanno/previm'
-            NeoBundle 'plasticboy/vim-markdown'
+            call dein#add('tyru/open-browser.vim')
+            call dein#add('kannokanno/previm')
+            call dein#add('plasticboy/vim-markdown')
         " }
         
         " misc {
-            NeoBundle 'Shougo/unite.vim'
-            NeoBundle 'Shougo/neomru.vim' "Necessary for :Unite file_mru
-            NeoBundle 'Shougo/vimfiler.vim'
-            NeoBundle 'scrooloose/nerdcommenter'
-            NeoBundle 'mattn/emmet-vim'
-            NeoBundle 'w0ng/vim-hybrid'
-            NeoBundle 'scrooloose/syntastic'
-            NeoBundle 'tpope/vim-fugitive'
-            NeoBundle 'gregsexton/MatchTag'
-            NeoBundle 'terryma/vim-multiple-cursors'
-            NeoBundle 'ConradIrwin/vim-bracketed-paste'
-            NeoBundle 'rking/ag.vim'
-            NeoBundle 'rizzatti/dash.vim'
-            NeoBundle 'junegunn/vim-easy-align'
+            call dein#add('Shougo/unite.vim')
+            call dein#add('Shougo/neomru.vim')
+            call dein#add('Shougo/vimfiler.vim')
+            call dein#add('scrooloose/nerdcommenter')
+            call dein#add('mattn/emmet-vim')
+            call dein#add('w0ng/vim-hybrid')
+            call dein#add('scrooloose/syntastic')
+            call dein#add('tpope/vim-fugitive')
+            call dein#add('gregsexton/MatchTag')
+            call dein#add('terryma/vim-multiple-cursors')
+            call dein#add('ConradIrwin/vim-bracketed-paste')
+            call dein#add('rking/ag.vim')
+            call dein#add('rizzatti/dash.vim')
+            call dein#add('junegunn/vim-easy-align')
         " }
-    
-        call neobundle#end()
+
+        call dein#end()
+
         filetype plugin indent on
-        NeoBundleCheck
-    " }
-    
+
+        if dein#check_install()
+          call dein#install()
+        endif
+
+    " } 
+
     " unite {
         " let g:unite_enable_start_insert = 1
         let g:unite_source_file_mru_limit = 200
