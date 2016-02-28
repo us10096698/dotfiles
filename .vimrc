@@ -41,6 +41,7 @@ set nocompatible
            autocmd!
            autocmd BufRead,BufNewFile *.{md,mdwn,mkd,mkdn,mark*} set filetype=markdown
            autocmd BufNewFile,BufRead *.gradle set filetype=groovy
+           autocmd BufRead,BufNewFile *.es6 set filetype=javascript
         augroup END
     " }
 
@@ -117,6 +118,7 @@ set nocompatible
             call dein#add('rking/ag.vim')
             call dein#add('rizzatti/dash.vim')
             call dein#add('junegunn/vim-easy-align')
+            call dein#add('othree/yajs.vim')
         " }
 
         call dein#end()
