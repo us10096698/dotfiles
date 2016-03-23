@@ -1,59 +1,57 @@
-" .gvimrc settings
+" gvim_configuration {
 
-"initial directory location of file saving dialog
-set browsedir=last
+    " misc {
+        set browsedir=last
+        set guioptions-=T
+        set guioptions-=m
 
-" overwrite textwidth configuration
- autocmd FileType text setlocal textwidth=0
+        inoremap <ESC> <ESC>:set iminsert=0<CR>
+        autocmd FileType text setlocal textwidth=0
 
-" alias setting
-ca save browse confirm saveas
+        if has("syntax")
+          syntax enable
+        endif
 
-" IME switch via ESC key
-inoremap <ESC> <ESC>:set iminsert=0<CR>
+        if has('gui_macvim')
+          set guifont=Menlo:h16
+        endif
 
-if has('gui_macvim')
-  set guifont=Menlo:h16
-endif
+        filetype on
+    " }
 
-if has("syntax")
-	syntax on
-endif
+    "aliases {
+        ca save browse confirm saveas
+    " }
 
-filetype on 
+    " remember_window_position {
+        let g:save_window_file = expand('~/.vimwinpos')
+        augroup SaveWindow
+          autocmd!
+          autocmd VimLeavePre * call s:save_window()
+          function! s:save_window()
+            let options = ['set columns=' . &columns,'set lines=' . &lines,'winpos ' . getwinposx() . ' ' . getwinposy(),]
+            call writefile(options, g:save_window_file)
+          endfunction augroup END
 
-" overwrite textwidth configuration
-autocmd FileType text setlocal textwidth=0
+        if filereadable(g:save_window_file)
+          execute 'source' g:save_window_file
+        endif
+    " }
 
-"------------------------------------------------
-"Remenber Window Position
-"------------------------------------------------
-let g:save_window_file = expand('~/.vimwinpos')
-augroup SaveWindow
-  autocmd!
-  autocmd VimLeavePre * call s:save_window()
-  function! s:save_window()
-    let options = ['set columns=' . &columns,'set lines=' . &lines,'winpos ' . getwinposx() . ' ' . getwinposy(),]
-    call writefile(options, g:save_window_file)
-  endfunction augroup END
-"---------------------------------------------------
-if filereadable(g:save_window_file)
-  execute 'source' g:save_window_file
-endif
+    " colorscheme {
+        set background=dark
+        colorscheme hybrid
+    " }
 
-" -------------------- Solarized ---------------------------- "
-syntax enable
-set background=dark
-let g:solarized_termcolors=256
-colorscheme solarized
+    " transparency {
+        if has('mac')
+          autocmd FocusGained * set transparency=5
+          autocmd FocusLost * set transparency=15
+        else
+          autocmd FocusGained * set transparency=250
+          autocmd FocusLost * set transparency=200
+        endif
+    " }
 
-"-------------------- Transparency Settings ------------
-
-if has('mac')
-  autocmd FocusGained * set transparency=5
-  autocmd FocusLost * set transparency=15
-else
-  autocmd FocusGained * set transparency=220
-  autocmd FocusLost * set transparency=200
-endif
+" }
 

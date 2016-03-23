@@ -26,6 +26,7 @@ set nocompatible
         set whichwrap=b,s,<,> " b:backspace, s:space, <:<Left> >:<Right>
         set noundofile
         set noswapfile
+        set colorcolumn=80
     "  }
 
     " search {
@@ -34,6 +35,7 @@ set nocompatible
         set wrapscan
         set incsearch
         set hlsearch
+
     " }
 
     " fileType {
@@ -60,6 +62,8 @@ set nocompatible
     " cursor { 
         noremap <C-e> <Esc>$
         noremap mm %
+        inoremap <C-c> <Esc>
+        nmap <silent> <Esc><Esc> :noh<CR>
     " }
 
     " syntax {
@@ -132,7 +136,7 @@ set nocompatible
     " } 
 
     " unite {
-        " let g:unite_enable_start_insert = 1
+        let g:unite_enable_start_insert = 1
         let g:unite_source_file_mru_limit = 200
 
         if executable('ag')
@@ -156,7 +160,7 @@ set nocompatible
         nnoremap <silent> [unite]r :<C-u>Unite -buffer-name=register register<CR>
     " }
     
-    " VimFiler {
+    " vimFiler {
         let g:vimfiler_as_default_explorer = 1
         let g:vimfiler_safe_mode_by_default = 0
         let g:vimfiler_ignore_pattern = []
@@ -168,6 +172,10 @@ set nocompatible
         nnoremap <silent> [filer]e :<C-u>VimFilerBufferDir -split -simple -winwidth=25 -no-quit<CR>
     " }
     
+    " emmet {
+        let g:user_emmet_expandabbr_key = '<C-g>'
+    " }
+
     " fugitive {
         set diffopt+=vertical
       
