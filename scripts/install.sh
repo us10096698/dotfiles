@@ -12,6 +12,9 @@ cd ~/.dotfiles
 git submodule init
 git submodule update
 
+mkdir -p .vim/dein/repos/github.com/Shougo/dein.vim
+git clone https://github.com/Shougo/dein.vim .vim/dein/repos/github.com/Shougo/dein.vim
+
 backupdir="$1" 
 
 # backup

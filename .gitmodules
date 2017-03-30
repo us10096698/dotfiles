@@ -2,6 +2,3 @@
 	path = .bash_it
 	url = https://github.com/Bash-it/bash-it
   ignore = dirty
-[submodule ".vim/dein/repos/github.com/Shougo/dein.vim"]
-	path = .vim/dein/repos/github.com/Shougo/dein.vim
-	url = https://github.com/Shougo/dein.vim
