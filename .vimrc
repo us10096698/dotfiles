@@ -26,6 +26,7 @@ set nocompatible
         set whichwrap=b,s,<,> " b:backspace, s:space, <:<Left> >:<Right>
         set noundofile
         set noswapfile
+        set nobackup
         set colorcolumn=80
     "  }
 
