@@ -13,11 +13,11 @@ git submodule init
 git submodule update
 
 backupdir="$1"
+[ -d $backupdir ] && : || mkdir -p $backupdir
 
 # backup
 [ -f ~/.bash_profile ] && mv ~/.bash_profile "$backupdir"/.bash_profile || :
 [ -d ~/.bash_it ] && mv ~/.bash_it "$backupdir"/.bash_it || :
-[ -d ~/.vim ] && mv ~/.vim "$backupdir"/.vim || :
 [ -f ~/.vimrc ] && mv ~/.vimrc "$backupdir"/.vimrc || :
 [ -f ~/.gvimrc ] && mv ~/.gvimrc "$backupdir"/.gvimrc || :
 [ -f ~/.tmux.conf ] && mv ~/.tmux.conf "$backupdir"/.tmux.conf || :
@@ -29,7 +29,6 @@ ln -s ~/.dotfiles/custom .bash_it/custom
 
 cd ~
 ln -s .dotfiles/.bash_it .bash_it
-ln -s .dotfiles/.vim .vim
 ln -s .dotfiles/.vimrc .vimrc
 ln -s .dotfiles/.gvimrc .gvimrc
 ln -s .dotfiles/.tmux.conf .tmux.conf

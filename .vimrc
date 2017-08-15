@@ -86,15 +86,7 @@
         if dein#load_state(s:dein_dir)
           call dein#begin(s:dein_dir)
           call dein#add('Shougo/dein.vim')
-          call dein#add('Shougo/vimproc.vim', {
-                \ 'build' : {
-                \     'windows' : 'tools\\update-dll-mingw',
-                \     'cygwin' : 'make -f make_cygwin.mak',
-                \     'mac' : 'make -f make_mac.mak',
-                \     'linux' : 'make',
-                \     'unix' : 'gmake',
-                \    },
-                \ })
+          call dein#add('Shougo/vimproc.vim', {'build': 'make'})
 
           " plugins {
               call dein#add('Shougo/neocomplete')
@@ -227,24 +219,13 @@
 
         inoremap <expr><C-g> neocomplete#undo_completion()
         inoremap <expr><C-l> neocomplete#complete_common_string()
-
-        " <CR>: close popup and save indent.
         inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
           function! s:my_cr_function()
             return (pumvisible() ? "\<C-y>" : "" ) . "\<CR>"
-            "For no inserting <CR> key.
-            "return pumvisible() ? "\<C-y>" : "\<CR>"
           endfunction
-       " <TAB>: completion.
        inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-       " <C-h>, <BS>: close popup and delete backword char.
        inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
        inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
-       " Close popup by <Space>.
-       "inoremap <expr><Space> pumvisible() ? "\<C-y>" : "\<Space>"
-
-       " AutoComplPop like behavior.
-       "let g:neocomplete#enable_auto_select = 1
 
        " Enable omni completion.
        autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
@@ -253,17 +234,13 @@
        autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
        autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
-       " Enable heavy omni completion.
        if !exists('g:neocomplete#sources#omni#input_patterns')
          let g:neocomplete#sources#omni#input_patterns = {}
        endif
-         "let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
-         "let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
-         "let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
 
-         " For perlomni.vim setting.
-         " https://github.com/c9s/perlomni.vim
-         " let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
+       "let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
+       "let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
+       "let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
     " }
 
     " neoSnippet {
