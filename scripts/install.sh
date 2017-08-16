@@ -2,17 +2,13 @@
 
 set -eux
 
-if [ $# -ne 1 ]; then
-  echo "USAGE: install.sh <BACKUP_DIR>"
-  exit 1
-fi
-
 cd ~/.dotfiles
 
 git submodule init
 git submodule update
 
-backupdir="$1"
+backupdir="~/.dotfiles.backup"
+
 [ -d $backupdir ] && : || mkdir -p $backupdir
 
 # backup
@@ -21,8 +17,10 @@ backupdir="$1"
 [ -f ~/.vimrc ] && mv ~/.vimrc "$backupdir"/.vimrc || :
 [ -f ~/.gvimrc ] && mv ~/.gvimrc "$backupdir"/.gvimrc || :
 [ -f ~/.tmux.conf ] && mv ~/.tmux.conf "$backupdir"/.tmux.conf || :
-[ -f ~/.dircolors ] && mv ~/.dircolors "$backupdir"/.dircolors || :
+[ -f ~/.dir_colors ] && mv ~/.dir_colors "$backupdir"/.dir_colors || :
 [ -f ~/.gitconfig ] && mv ~/.gitconfig "$backupdir"/.gitconfig || :
+
+echo "NOTICE: Original dotfiles are copied into ~/.dotfiles.backup directory."
 
 rm -rf .bash_it/custom
 ln -s ~/.dotfiles/custom .bash_it/custom
