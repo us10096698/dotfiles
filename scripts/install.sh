@@ -8,9 +8,9 @@ is_cyg="uname | grep CYG"
 
 bash_it_installation()
 {
-  [ `eval $is_cyg` ] && return
+  [ `eval $is_cyg` ] && return || :
 
-  [ -d $HOME/.bash_it ] && mv $HOME/.bash_it $backupdir/.bash_it
+  [ -d $HOME/.bash_it ] && mv $HOME/.bash_it $backupdir/.bash_it || :
   git submodule init
   git submodule update
   rm -rf $dotfiles_dir/.bash_it/custom
@@ -20,16 +20,16 @@ bash_it_installation()
 }
 
 backup() {
-  [ -f $HOME/.bash_profile ] && mv $HOME/.bash_profile "$backupdir"/.bash_profile
-  [ -f $HOME/.vimrc ] && mv $HOME/.vimrc "$backupdir"/.vimrc
-  [ -f $HOME/.gvimrc ] && mv $HOME/.gvimrc "$backupdir"/.gvimrc
-  [ -f $HOME/.tmux.conf ] && mv $HOME/.tmux.conf "$backupdir"/.tmux.conf
-  [ -f $HOME/.dir_colors ] && mv $HOME/.dir_colors "$backupdir"/.dir_colors
-  [ -f $HOME/.gitconfig ] && mv $HOME/.gitconfig "$backupdir"/.gitconfig
+  [ -f $HOME/.bash_profile ] && mv $HOME/.bash_profile "$backupdir"/.bash_profile || :
+  [ -f $HOME/.vimrc ] && mv $HOME/.vimrc "$backupdir"/.vimrc || :
+  [ -f $HOME/.gvimrc ] && mv $HOME/.gvimrc "$backupdir"/.gvimrc || :
+  [ -f $HOME/.tmux.conf ] && mv $HOME/.tmux.conf "$backupdir"/.tmux.conf || :
+  [ -f $HOME/.dir_colors ] && mv $HOME/.dir_colors "$backupdir"/.dir_colors || :
+  [ -f $HOME/.gitconfig ] && mv $HOME/.gitconfig "$backupdir"/.gitconfig || :
 }
 
-link() {
-  [ `eval $is_cyg` ] && export CYGWIN=winsymlinks:native
+symlink() {
+  [ `eval $is_cyg` ] && export CYGWIN=winsymlinks:native || :
 
   ln -s $dotfiles_dir/.vimrc $HOME/.vimrc
   ln -s $dotfiles_dir/.gvimrc $HOME/.gvimrc
@@ -43,7 +43,7 @@ cd $dotfiles_dir
 
 bash_it_installation
 backup
-link
+symlink
 
 echo "DONE!"
 echo " *** NOTICE *** Original dotfiles are copied into $backupdir"
