@@ -109,6 +109,7 @@
               call dein#add('rking/ag.vim')
               call dein#add('junegunn/vim-easy-align')
               call dein#add('othree/yajs.vim')
+              call dein#add('davidhalter/jedi-vim')
           " }
 
           call dein#end()
@@ -231,8 +232,13 @@
        autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
        autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
        autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-       autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
        autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+
+       if has('python3')
+         autocmd FileType python setlocal omnifunc=python3complete#Complete
+       else
+         autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+       endif
 
        if !exists('g:neocomplete#sources#omni#input_patterns')
          let g:neocomplete#sources#omni#input_patterns = {}
@@ -268,6 +274,12 @@
           nmap <Space>a [ag]
           nnoremap <silent> [ag] :<C-u>Ag<CR>
         endif
+    " }
+
+    " jedi-vim {
+        let g:jedi#popup_on_dot=0
+        let g:jedi#popup_select_first=0
+        autocmd FileType python setlocal completeopt-=preview
     " }
 
 " }
