@@ -36,6 +36,9 @@ symlink() {
   ln -s $dotfiles_dir/.tmux.conf $HOME/.tmux.conf
   ln -s $dotfiles_dir/.gitconfig $HOME/.gitconfig
   ln -s $dotfiles_dir/.dir_colors $HOME/.dir_colors
+
+  [ -d $HOME/.vim ] && : || mkdir $HOME/.vim
+  ln -s $dotfiles_dir/rc $HOME/.vim/rc
 }
 
 cd $dotfiles_dir
