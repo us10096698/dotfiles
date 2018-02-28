@@ -13,8 +13,8 @@ case ${OSTYPE} in
     ;;
   *)
     alias ls='ls --color=auto'
-    alias pbpaste='xsel -b'
-    alias pbcopy='xsel -b'
+    alias pbcopy='xsel -bi'
+    alias pbpaste='xsel -bo'
     ;;
 esac
 
@@ -23,10 +23,4 @@ alias ll='ls -l'
 alias lla='ls -la'
 
 alias tmux='tmux -2'
-
-# eval "$(docker-machine env default)"
-
-# export PATH=$HOME/.nodebrew/current/bin:$PATH
-# export PATH="$HOME/.rbenv/bin:$PATH"
-
-# eval "$(rbenv init -)"
+alias pip='pip --trusted-host pypi.python.org'

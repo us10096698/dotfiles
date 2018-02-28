@@ -15,7 +15,7 @@
         set tabstop=2
         set shiftwidth=2
         set softtabstop=2
-        set clipboard=unnamed
+        set clipboard=unnamed,unnamedplus
         set ruler
         set wrap
         set showmatch
@@ -32,6 +32,10 @@
         set wrapscan
         set incsearch
         set hlsearch
+        set splitbelow
+        set splitright
+        let mapleader = "\<Space>"
+        let g:omni_sql_no_default_maps = 1
     "  }
 
     " autocmds {
@@ -59,11 +63,11 @@
     " }
 
     " keymap {
-        noremap <C-e> <Esc>$
         inoremap <C-c> <Esc>
         nmap <silent> <Esc><Esc> :noh<CR>
         noremap <silent> ,s :if exists("g:syntax_on")\|syntax off\|else\|syntax enable\|endif<CR>
         noremap mm %
+        nnoremap <Leader>w :w<CR>
     " }
 
     " syntax {

@@ -1,47 +1,76 @@
 [[plugins]]
 repo = 'Shougo/dein.vim'
-
 [[plugins]]
 repo = 'Shougo/vimproc.vim'
 hook_post_update = 'make'
-
 [[plugins]]
 repo = 'osyo-manga/vim-precious'
 depends = ['context_filetype.vim']
-
 [[plugins]]
 repo = 'Shougo/context_filetype.vim'
-
 [[plugins]]
 repo = 'cespare/vim-toml'
 on_ft = 'toml'
-
 [[plugins]]
 repo = 'plasticboy/vim-markdown'
 on_ft = 'markdown'
-
 [[plugins]]
 repo = 'othree/yajs.vim'
 on_ft = 'javascript'
-
+[[plugins]]
+repo = 'mxw/vim-jsx'
+on_ft = 'jsx'
 [[plugins]]
 repo = 'gregsexton/MatchTag'
-
 [[plugins]]
 repo = 'terryma/vim-multiple-cursors'
-
 [[plugins]]
 repo = 'ConradIrwin/vim-bracketed-paste'
-
 [[plugins]]
 repo = 'Shougo/neosnippet-snippets'
-
 [[plugins]]
 repo = 'tyru/open-browser.vim'
-
 [[plugins]]
 repo = 'Shougo/neomru.vim'
-
+[[plugins]]
+repo = 'airblade/vim-rooter'
+[[plugins]]
+repo = 'tpope/vim-surround'
+[[plugins]]
+repo = 'dyng/ctrlsf.vim'
+hook_add='''
+  nnoremap <Leader>/ :CtrlSF<Space>
+'''
+[[plugins]]
+repo = 'ctrlpvim/ctrlp.vim'
+hook_add='''
+  nnoremap <Leader>o :CtrlP<CR>
+  let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
+  let g:ctrlp_prompt_mappings = {
+    \ 'PrtClearCache()':      ['<c-r>'],
+    \ 'PrtSelectMove("j")':   ['<c-n>'],
+    \ 'PrtSelectMove("k")':   ['<c-p>'],
+    \ 'PrtHistory(-1)':       [],
+    \ 'PrtHistory(1)':        [],
+    \ 'AcceptSelection("h")': ['<c-j>'],
+    \ 'AcceptSelection("v")': ['<c-l>'],
+    \ 'PrtCurLeft()':         ['<left>'],
+    \ 'PrtCurRight()':        ['<right>']
+    \ }
+'''
+[[plugins]]
+repo = 'terryma/vim-expand-region'
+hook_add='''
+  vmap v <Plug>(expand_region_expand)
+  vmap <C-v> <Plug>(expand_region_shrink)
+'''
+[[plugins]]
+repo='scrooloose/nerdtree'
+hook_add='''
+  nnoremap <Leader>f :NERDTreeToggle<CR>
+'''
+[[plugins]]
+repo = 'itchyny/lightline.vim'
 [[plugins]]
 repo = 'Shougo/neocomplete'
 hook_add='''
@@ -95,7 +124,7 @@ hook_add='''
 [[plugins]]
 repo = 'Shougo/neosnippet'
 hook_add='''
-  " let g:neosnippet#snippets_directory = '~/.dotfiles/snip'
+  let g:neosnippet#snippets_directory = '~/.snip'
   imap <C-k> <Plug>(neosnippet_expand_or_jump)
   smap <C-k> <Plug>(neosnippet_expand_or_jump)
   xmap <C-k> <Plug>(neosnippet_expand_target)
@@ -111,63 +140,21 @@ repo = 'kannokanno/previm'
 on_ft = 'markdown'
 hook_add = '''
   let g:vim_markdown_folding_disabled = 1
-  nnoremap <silent> <C-p> :PrevimOpen<CR>
-'''
-
-[[plugins]]
-repo = 'Shougo/unite.vim'
-hook_add = '''
-  let g:unite_enable_start_insert = 1
-  let g:unite_source_file_mru_limit = 200
-
-  if executable('ag')
-    let g:unite_source_grep_command = 'ag'
-    let g:unite_source_grep_default_opts = '--nogroup --nocolor --column'
-    let g:unite_source_grep_recursive_opt = ''
-    let g:unite_source_rec_async_command =
-      \ ['ag', '--follow', '--nocolor', '--nogroup',
-      \  '--hidden', '-g', '']
-  endif
-
-  nnoremap [unite] <Nop>
-  nmap <Space>u [unite]
-
-  nnoremap <silent> [unite]m :<C-u>Unite file_mru<CR>
-  nnoremap <silent> [unite]g :<C-u>Unite -buffer-name=gitfiles file_rec/git<CR>
-  nnoremap <silent> [unite]f :<C-u>Unite -buffer-name=files file_rec/async<CR>
-  nnoremap <silent> [unite]b :<C-u>Unite buffer<CR>
-  nnoremap <silent> [unite]bm :<C-u>Unite bookmark<CR>
-  nnoremap <silent> [unite]ba :<C-u>UniteBookmarkAdd<CR>
-  nnoremap <silent> [unite]r :<C-u>Unite -buffer-name=register register<CR>
-'''
-
-[[plugins]]
-repo = 'Shougo/vimfiler.vim'
-hook_add = '''
-  let g:vimfiler_as_default_explorer = 1
-  let g:vimfiler_safe_mode_by_default = 0
-  let g:vimfiler_ignore_pattern = []
-
-  nnoremap [filer] <Nop>
-  nmap <Space>f [filer]
-
-  nnoremap <silent> [filer]i :<C-u>VimFilerBufferDir<CR>
-  nnoremap <silent> [filer]e :<C-u>VimFilerBufferDir -split -simple -winwidth=25 -no-quit<CR>
+  let g:previm_show_header = 0
+  nnoremap <silent> <C-s> :PrevimOpen<CR>
 '''
 
 [[plugins]]
 repo = 'scrooloose/nerdcommenter'
 hook_add = '''
   let NERDSpaceDelims = 1
-  nmap ,, <Plug>NERDCommenterToggle
-  vmap ,, <Plug>NERDCommenterToggle
 '''
 
 [[plugins]]
 repo = 'mattn/emmet-vim'
 on_ft = ['html', 'css']
 hook_add = '''
-  let g:user_emmet_expandabbr_key = '<C-g>'
+  let g:user_emmet_expandabbr_key = '<C-y>'
 '''
 
 # [[plugins]]
@@ -190,16 +177,6 @@ hook_add = '''
   nnoremap <silent> [fugitive]d :<C-u>Gdiff<CR>
   nnoremap <silent> [fugitive]c :<C-u>Gcommit<CR>
   nnoremap <silent> [fugitive]b :<C-u>Gblame<CR>
-'''
-
-[[plugins]]
-repo = 'rking/ag.vim'
-hook_add='''
-  if executable('ag')
-    nnoremap [ag] <Nop>
-    nmap <Space>a [ag]
-    nnoremap <silent> [ag] :<C-u>Ag<CR>
-  endif
 '''
 
 [[plugins]]

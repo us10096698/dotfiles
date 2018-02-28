@@ -1,7 +1,3 @@
-snippet header
-alias he
-  #!/bin/sh
-
 snippet combine
 abbr combine multi files
   for fname in `find ${1:#:targetdir}`
@@ -25,4 +21,9 @@ snippet keytool
 alias kt
   keytool -importcert -file ${1} -keystore ${2} -storepass ${3} -noprompt
   ${4}
+
+snippet currentdir
+alias cd
+abbr get script path
+  $(cd $(dirname $0); pwd)
 
