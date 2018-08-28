@@ -211,6 +211,15 @@ install_pyenv() {
   cd $DOTFILES_HOME/$STARTUP_DIR && ls *.ipy | xargs -I{} ln -s $DOTFILES_HOME/$STARTUP_DIR/{} ~/$STARTUP_DIR/{}
 }
 
+install_jupyter() {
+  if [ $IS_INSECURE ]; then conda config --set ssl_verify False; fi
+  conda install -y -c conda-forge jupyter_contrib_nbextensions
+  conda install -y -c damianavila82 rise
+  conda install -y -c conda-forgejupyter_cms
+  # pip install jupyter_cms
+  # jupyter cms quick-setup --sys-prefix
+}
+
 install_vim() {
   [ `eval $IS_CYG` ] && return || :
   # TODO: cyg http://koturn.hatenablog.com/entry/2015/12/14/090000
@@ -218,6 +227,7 @@ install_vim() {
   # if [ -f /usr/local/bin/vim ]; then echo 'vim has already installed. skipping..'; return; fi
 
   cd $DOTFILES_HOME/vim/src
+  make distclean
 
   # because of linker error, excluded lto by LDFLAGS
   LDFLAGS="-fno-lto" \
@@ -240,6 +250,26 @@ install_vim() {
 
   # `make distclean` to clear configure cache
 
+  # osx
+  # ./configure \
+    # --with-features=huge \
+    # --enable-fail-if-missing \
+    # --enable-luainterp=yes\
+    # --enable-perlinterp=yes \
+    # --enable-python3interp=yes \
+    # --enable-rubyinterp=dynamic \
+    # --enable-multibyte \
+    # --enable-cscope \
+    # --enable-fontset \
+    # --prefix=/opt \
+    # --with-lua-prefix=/usr/local
+
+}
+
+unsecuring_pip() {
+  # https://qiita.com/wonder_zone/items/f00de737fd2e1eeb6581
+  FILE="~/.pyenv/versions/anaconda3-5.1.0/lib/python3.6/site-packages/pip/_internal/download.py"
+  sed -i 's/(method, url, \*args, \*\*kwargs/(method, url, verify=False, \*args, \*\*kwargs/g' $FILE
 }
 
 cd $DOTFILES_HOME
@@ -260,6 +290,7 @@ fi
 # install_pyenv
 # install_vim
 # install_docker
+# install_jupyter
 
 echo "DONE!"
 
