@@ -1,0 +1,3 @@
+shiftit
+iterm2
+flycut

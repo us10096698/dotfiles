@@ -29,3 +29,6 @@
 
 [http]
   sslverify = false
+[user]
+	email = masaya.hirabara@toshiba.co.jp
+	name = Masaya Hirabara

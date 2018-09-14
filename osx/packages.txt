@@ -1,0 +1,6 @@
+git
+zsh
+zsh-completetions
+nodebrew
+rbenv
+ruby-build
