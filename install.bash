@@ -22,7 +22,7 @@ echo "- BACKUPDIR: $BACKUPDIR"
 echo "- DIST: $DIST"
 
 NODE_VERSION="8.3.0"
-RUBY_VERSION="2.5.0"
+RUBY_VERSION="2.5.3"
 PYTHON_VERSION="anaconda3-5.1.0"
 
 echo "## commands"
@@ -118,10 +118,14 @@ install_ruby() {
   git clone https://github.com/rbenv/ruby-build.git $HOME/.rbenv/plugins/ruby-build
   source $BASH_PROFILE
 
-  rbenv install $RUBY_VERSION
-  rbenv global $RUBY_VERSION
+  if $IS_INSECURE; then
+    RUBY_BUILD_CURL_OPTS=--insecure rbenv install $RUBY_VERSION
+    echo ':ssl_verify_mode: 0' >> ~/.gemrc;
+  else
+    rbenv install $RUBY_VERSION
+  fi
 
-  if $IS_INSECURE; then echo ':ssl_verify_mode: 0' >> ~/.gemrc; fi
+  rbenv global $RUBY_VERSION
 }
 
 install_python() {
