@@ -74,7 +74,7 @@ install_dependency() {
       if [ $IS_CENTOS ]; then
         sudo -E yum install -y automake libevent-devel ncurses-devel #tmux
         sudo yum install -y openssl-devel readline-devel zlib-devel #ruby
-        sudo yum install -y lua-devel ncurses-devel python-devel perl-ExtUtils-Embed #vim
+        sudo yum install -y lua-devel ncurses-devel python-devel perl-ExtUtils-Embed the_silver_searcher #vim
       elif [ $IS_UBUNTU ]; then
         sudo -E ufw disable
         sudo -E apt install -y language-pack-ja-base language-pack-ja fonts-ipafont-gothic fonts-ipafont-mincho
@@ -118,7 +118,7 @@ install_ruby() {
   git clone https://github.com/rbenv/ruby-build.git $HOME/.rbenv/plugins/ruby-build
   source $BASH_PROFILE
 
-  if $IS_INSECURE; then
+  if [ $IS_INSECURE ]; then
     RUBY_BUILD_CURL_OPTS=--insecure rbenv install $RUBY_VERSION
     echo ':ssl_verify_mode: 0' >> ~/.gemrc;
   else
@@ -143,7 +143,7 @@ install_python() {
   CONFIGURE_OPTS="--enable-shared" pyenv install $PYTHON_VERSION
   pyenv global $PYTHON_VERSION
 
-  if $IS_INSECURE; then conda config --set ssl_verify False; fi
+  if [ $IS_INSECURE ]; then conda config --set ssl_verify False; fi
 
   PASSWORD_HASH=`python $HOME/.jupyter/passwd.py`
   echo "c.NotebookApp.password = u'$PASSWORD_HASH'" >> $HOME/.jupyter/jupyter_notebook_config.py
