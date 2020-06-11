@@ -1,0 +1,41 @@
+{
+	"analytics-uuid": "537aa51e-10ac-4517-bab5-8ba1c8955bcb",
+	"motd": {
+		"cloudBuildErrorAfter": 1591315200000,
+		"cloudBuildWarnAfter": 1588636800000,
+		"minVersion": "3.0.5"
+	},
+	"motd.fetched": 1587960801166,
+	"usage": false,
+	"user": {
+		"iss": "accounts.google.com",
+		"azp": "563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com",
+		"aud": "563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com",
+		"sub": "106325274678096297073",
+		"email": "innolab.ayascore@gmail.com",
+		"email_verified": true,
+		"at_hash": "sqrSfJznm9_SnQoxY64hVg",
+		"iat": 1575014668,
+		"exp": 1575018268
+	},
+	"tokens": {
+		"expires_at": 1587975583680,
+		"refresh_token": "1//0eWrSqg9hDkjgCgYIARAAGA4SNwF-L9IryruyAFQAnOrWxL23ofMncpM6mGxGPNBRu4YKg34s3ktC6kEfkVTaI530tjVdV3nQ3fI",
+		"scopes": [
+			"email",
+			"https://www.googleapis.com/auth/cloud-platform",
+			"https://www.googleapis.com/auth/cloudplatformprojects.readonly",
+			"https://www.googleapis.com/auth/firebase",
+			"openid"
+		],
+		"access_token": "ya29.a0Ae4lvC23bl6XIl3Sh5kiWPwnSen435YE-3ZeWaog_tLtzfvFfDaV4y8E8xcPRXWQjonXHbjJD7l5wti86IVnea_Pw-zPtvSLgigNLLy2xVd0vwWE_j95E1hfklzbeWwv0szpwC94-wxqlkRp0JYMfTHNeIqreFvWrrtZeW-dGyQcOQ",
+		"expires_in": 3599,
+		"scope": "https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/cloudplatformprojects.readonly https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/firebase openid",
+		"token_type": "Bearer",
+		"id_token": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjI4Yjc0MWU4ZGU5ODRhNDcxNTlmMTllNmQ3NzgzZTlkNGZhODEwZGIiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJhY2NvdW50cy5nb29nbGUuY29tIiwiYXpwIjoiNTYzNTg0MzM1ODY5LWZncmhnbWQ0N2JxbmVraWo1aThiNXByMDNobzg0OWU2LmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwiYXVkIjoiNTYzNTg0MzM1ODY5LWZncmhnbWQ0N2JxbmVraWo1aThiNXByMDNobzg0OWU2LmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwic3ViIjoiMTA2MzI1Mjc0Njc4MDk2Mjk3MDczIiwiZW1haWwiOiJpbm5vbGFiLmF5YXNjb3JlQGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJhdF9oYXNoIjoiVUlzREV0QXdRT1dYX09ndEV2eXJaQSIsImlhdCI6MTU4Nzk3MTk4NCwiZXhwIjoxNTg3OTc1NTg0fQ.O_Zg3fPnSCec6hQ1hmKHHpy-56F_3u6JFfRD7tB1LuimQru4hSlRkJfaD0Mqb1rs_P1vrhXppMDYDWFycw6yuA59hhhgko4gSxPf3vVjdPNDkBo678t26PeGxe88wCn2ZoTHt0L79J2CPYB4UzvUkreFzicM8n32HjeiliDusS_pho_ReMLUFozTxz7DFkOsM3e3zuGBX00K24_Dap0kALauDbfEnZaLbd3ZemdZX1PhralrRuJZPC_4rgNewp7tIw0ey-K-_OIFuy-CHbqLI5jRHJxxgOu6UZPd7EsW2OvV8dIakCFA5wpI9X06uWJQYBMfTqDBAM17af0YPGVmhg"
+	},
+	"activeProjects": {
+		"/Users/masa/bullpen/gitrepos/ayascore-management-app": "staging",
+		"/Users/masa/bullpen/gitrepos/ayascore-mgmt/mgmtapp": "staging"
+	}
+}

@@ -22,8 +22,9 @@ echo "- BACKUPDIR: $BACKUPDIR"
 echo "- DIST: $DIST"
 
 NODE_VERSION="8.3.0"
-RUBY_VERSION="2.5.3"
-PYTHON_VERSION="anaconda3-5.1.0"
+RUBY_VERSION="2.5.7"
+PYTHON_VERSION="anaconda3-2019.10"
+PYTHON2_VERSION="2.7.17"
 
 echo "## commands"
 
@@ -134,23 +135,26 @@ install_python() {
   if type pyenv > /dev/null 2>&1; then echo 'pyenv has already installed. skipping..'; return; fi
 
   git clone https://github.com/pyenv/pyenv.git $HOME/.pyenv
-  echo 'export PYENV_ROOT'="$HOME/.pyenv" >> $BASH_PROFILE
-  echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> $BASH_PROFILE
-  echo -e 'if command -v pyenv 1>/dev/null 2>&1; then\n  eval "$(pyenv init -)"\nfi' >> $BASH_PROFILE
-  # echo 'eval "$(pyenv virtualenv-init -)"' >> $BASH_PROFILE
+  git clone https://github.com/pyenv/pyenv-update.git $HOME/.pyenv/plugins/pyenv-update
+  # echo 'export PYENV_ROOT'="$HOME/.pyenv" >> $BASH_PROFILE
+  # echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> $BASH_PROFILE
+  # echo -e 'if command -v pyenv 1>/dev/null 2>&1; then\n  eval "$(pyenv init -)"\nfi' >> $BASH_PROFILE
+  # # echo 'eval "$(pyenv virtualenv-init -)"' >> $BASH_PROFILE
   source $BASH_PROFILE
 
   CONFIGURE_OPTS="--enable-shared" pyenv install $PYTHON_VERSION
-  pyenv global $PYTHON_VERSION
+  CONFIGURE_OPTS="--enable-shared" pyenv install $PYTHON2_VERSION
+
+  pyenv global $PYTHON2_VERSION $PYTHON_VERSION
 
   if [ $IS_INSECURE ]; then conda config --set ssl_verify False; fi
 
-  PASSWORD_HASH=`python $HOME/.jupyter/passwd.py`
-  echo "c.NotebookApp.password = u'$PASSWORD_HASH'" >> $HOME/.jupyter/jupyter_notebook_config.py
+  # PASSWORD_HASH=`python $HOME/.jupyter/passwd.py`
+  # echo "c.NotebookApp.password = u'$PASSWORD_HASH'" >> $HOME/.jupyter/jupyter_notebook_config.py
 
-  STARTUP_DIR=".ipython/profile_default/startup"
-  [ ! -d $HOME/$STARTUP_DIR ]; mkdir -p $HOME/$STARTUP_DIR
-  cd $DOTFILES_HOME/$STARTUP_DIR && ls *.ipy | xargs -I{} ln -s $DOTFILES_HOME/$STARTUP_DIR/{} $HOME/$STARTUP_DIR/{}
+  # STARTUP_DIR=".ipython/profile_default/startup"
+  # [ ! -d $HOME/$STARTUP_DIR ]; mkdir -p $HOME/$STARTUP_DIR
+  # cd $DOTFILES_HOME/$STARTUP_DIR && ls *.ipy | xargs -I{} ln -s $DOTFILES_HOME/$STARTUP_DIR/{} $HOME/$STARTUP_DIR/{}
 }
 
 install_vim() {
@@ -206,8 +210,7 @@ cd $DOTFILES_HOME
 # install_dependency
 # install_tmux
 # install_ruby
-# install_python
+install_python
 # install_vim
 
 echo "DONE!"
-

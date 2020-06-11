@@ -12,11 +12,11 @@
 	ci = commit
 	st = status
   br = branch
-  co = checkout 
+  co = checkout
   ls = ls-files
 	undo = reset --hard
   lol = log --graph --decorate --pretty=oneline --abbrev-commit --all
-  hi = log --date=short --pretty=format:'%cd %C(yellow)%h %C(white) %s %C(green)@%cn' 
+  hi = log --date=short --pretty=format:'%cd %C(yellow)%h %C(white) %s %C(green)@%cn'
   gr = log --graph --date=short --decorate=short --pretty=format:'%Cgreen%h %Creset%cd %Cblue%cn %Cred%d %Creset%s'
 
 [core]
@@ -30,5 +30,5 @@
 [http]
   sslverify = false
 [user]
-	email = masaya.hirabara@toshiba.co.jp
-	name = Masaya Hirabara
+	email = hirabara.masaya@isid.co.jp
+	name = li3415

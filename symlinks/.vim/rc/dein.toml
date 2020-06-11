@@ -1,212 +1,247 @@
-[[plugins]]
-repo = 'Shougo/dein.vim'
-[[plugins]]
-repo = 'Shougo/vimproc.vim'
-hook_post_update = 'make'
-[[plugins]] repo = 'osyo-manga/vim-precious'
-depends = ['context_filetype.vim']
-[[plugins]]
-repo = 'Shougo/context_filetype.vim'
-[[plugins]]
-repo = 'cespare/vim-toml'
-on_ft = 'toml'
-[[plugins]]
-repo = 'plasticboy/vim-markdown'
-on_ft = 'markdown'
-[[plugins]]
-repo = 'othree/yajs.vim'
-on_ft = 'javascript'
-[[plugins]]
-repo = 'mxw/vim-jsx'
-on_ft = 'jsx'
-[[plugins]]
-repo = 'aklt/plantuml-syntax'
-on_ft = 'plantuml'
-# [[plugins]]
-# repo = 'gregsexton/MatchTag'
-[[plugins]]
-repo = 'terryma/vim-multiple-cursors'
-[[plugins]]
-repo = 'ConradIrwin/vim-bracketed-paste'
-[[plugins]]
-repo = 'Shougo/neosnippet-snippets'
-[[plugins]]
-repo = 'tyru/open-browser.vim'
-[[plugins]]
-repo = 'Shougo/neomru.vim'
-[[plugins]]
-repo = 'airblade/vim-rooter'
-[[plugins]]
-repo = 'tpope/vim-surround'
-[[plugins]]
-repo = 'leafgarland/typescript-vim'
-[[plugins]]
-repo = 'dyng/ctrlsf.vim'
-hook_add='''
-  nnoremap <Leader>/ :CtrlSF<Space>
-'''
-[[plugins]]
-repo = 'ctrlpvim/ctrlp.vim'
-hook_add='''
-  nnoremap <Leader>o :CtrlP<CR>
-  let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|\.git'
-  let g:ctrlp_prompt_mappings = {
-    \ 'PrtClearCache()':      ['<c-r>'],
-    \ 'PrtSelectMove("j")':   ['<c-n>'],
-    \ 'PrtSelectMove("k")':   ['<c-p>'],
-    \ 'PrtHistory(-1)':       [],
-    \ 'PrtHistory(1)':        [],
-    \ 'AcceptSelection("h")': ['<c-j>'],
-    \ 'AcceptSelection("v")': ['<c-l>'],
-    \ 'PrtCurLeft()':         ['<left>'],
-    \ 'PrtCurRight()':        ['<right>']
-    \ }
-'''
-[[plugins]]
-repo = 'terryma/vim-expand-region'
-hook_add='''
-  vmap v <Plug>(expand_region_expand)
-  vmap <C-v> <Plug>(expand_region_shrink)
-'''
-[[plugins]]
-repo='scrooloose/nerdtree'
-hook_add='''
-  nnoremap <Leader>f :NERDTreeToggle<CR>
-'''
-[[plugins]]
-repo = 'itchyny/lightline.vim'
-[[plugins]]
-repo = 'Shougo/neocomplete'
-hook_add='''
-  let g:acp_enableAtStartup = 0
-  let g:neocomplete#enable_at_startup = 1
-  let g:neocomplete#enable_smart_case = 1
-  let g:neocomplete#sources#syntax#min_keyword_length = 3
+###
+#####
 
-  let g:neocomplete#sources#dictionary#dictionaries = {
-      \ 'default' : '',
-      \ 'vimshell' : $HOME.'/.vimshell_hist',
-      \ 'scheme' : $HOME.'/.gosh_completions'
-      \ }
+# functions {
+    [[plugins]]
+    repo = 'Shougo/dein.vim'
+    [[plugins]]
+    repo = 'Shougo/vimproc.vim'
+    hook_post_update = 'make'
+    [[plugins]]
+    repo = 'scrooloose/nerdcommenter'
+    hook_add = '''
+        let NERDSpaceDelims = 1
+    '''
+    [[plugins]]
+    repo = 'airblade/vim-rooter'
+    [[plugins]]
+    repo = 'itchyny/lightline.vim'
+    [[plugins]]
+    repo='scrooloose/nerdtree'
+    hook_add='''
+        nnoremap <Leader>f :NERDTreeToggle<CR>
+    '''
+    [[plugins]]
+    repo = 'simeji/winresizer'
+    # <C-e>, then hjkl
+    [[plugins]]
+    repo = 'cohama/lexima.vim'
+    hook_add='''
+        let g:lexima_enable_newline_rules = 0
+    '''
+    [[plugins]]
+    repo = 'dyng/ctrlsf.vim'
+    hook_add='''
+        nnoremap <Leader>/ :CtrlSF<Space>
+    '''
+    [[plugins]]
+    repo = 'ctrlpvim/ctrlp.vim'
+    hook_add='''
+        nnoremap <Leader>o :CtrlP<CR>
+        let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|\.git'
+        let g:ctrlp_prompt_mappings = {
+          \ 'PrtClearCache()':      ['<c-r>'],
+          \ 'PrtSelectMove("j")':   ['<c-n>'],
+          \ 'PrtSelectMove("k")':   ['<c-p>'],
+          \ 'PrtHistory(-1)':       [],
+          \ 'PrtHistory(1)':        [],
+          \ 'AcceptSelection("h")': ['<c-j>'],
+          \ 'AcceptSelection("v")': ['<c-l>'],
+          \ 'PrtCurLeft()':         ['<left>'],
+          \ 'PrtCurRight()':        ['<right>']
+          \ }
+    '''
+    [[plugins]]
+    repo = 'terryma/vim-expand-region'
+    hook_add='''
+        vmap v <Plug>(expand_region_expand)
+        vmap <C-v> <Plug>(expand_region_shrink)
+    '''
+    [[plugins]]
+    repo = 'nathanaelkane/vim-indent-guides'
+    hook_add = '''
+        let g:indent_guides_enable_on_vim_startup = 1
+        let g:indent_guides_exclude_filetypes = ['help', 'nerdtree']
+        let g:indent_guides_auto_colors = 0
+        autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd ctermbg=237
+        autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=240
+    '''
+    [[plugins]]
+    repo = 'tpope/vim-fugitive'
+    hook_add = '''
+        set diffopt+=vertical
 
-  if !exists('g:neocomplete#keyword_patterns')
-      let g:neocomplete#keyword_patterns = {}
-  endif
-  let g:neocomplete#keyword_patterns['default'] = '\h\w*'
+        nnoremap [fugitive] <Nop>
+        nmap <Space>g [fugitive]
 
-  inoremap <expr><C-g> neocomplete#undo_completion()
-  inoremap <expr><C-l> neocomplete#complete_common_string()
-  inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-    function! s:my_cr_function()
-      return (pumvisible() ? "\<C-y>" : "" ) . "\<CR>"
-    endfunction
- inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
- inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
- inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
+        nnoremap <silent> [fugitive]s :<C-u>Gstatus<CR>
+        nnoremap <silent> [fugitive]w :<C-u>Gwrite<CR>
+        nnoremap <silent> [fugitive]r :<C-u>Gread<CR>
+        nnoremap <silent> [fugitive]d :<C-u>Gdiff<CR>
+        nnoremap <silent> [fugitive]c :<C-u>Gcommit<CR>
+        nnoremap <silent> [fugitive]b :<C-u>Gblame<CR>
+    '''
+    [[plugins]]
+    repo = 'junegunn/vim-easy-align'
+    hook_add = '''
+        vmap <CR> <Plug>(EasyAlign)
+        xmap ga <Plug>(EasyAlign)
+        nmap ga <Plug>(EasyAlign)
+    '''
+# }
+# learning {
+    [[plugins]]
+    repo = 'ConradIrwin/vim-bracketed-paste'
+    [[plugins]]
+    repo = 'mattn/emmet-vim'
+    on_ft = ['html', 'css']
+    hook_add = '''
+        let g:user_emmet_expandabbr_key = '<C-y>'
+    '''
+    [[plugins]]
+    repo = 'tpope/vim-surround'
 
- " Enable omni completion.
- autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
- autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
- autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
- autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+    #[[plugins]]
+    #repo = 'terryma/vim-multiple-cursors'
+    # [[plugins]]
+    # repo = 'scrooloose/syntastic'
+    # hook_add = '''
+    #   "let g:syntastic_javascript_checkers=['eslint']
+    # '''
+# }
 
- if has('python3')
-   autocmd FileType python setlocal omnifunc=python3complete#Complete
- else
-   autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
- endif
+# completion {
+    [[plugins]]
+    repo = 'neoclide/coc.nvim'
+    rev = 'release'
+    hook_add='''
+        inoremap <silent><expr> <c-space> coc#refresh()
+        inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
- if !exists('g:neocomplete#sources#omni#input_patterns')
-   let g:neocomplete#sources#omni#input_patterns = {}
- endif
+        nmap <silent> gd <Plug>(coc-definition)
+        nmap <silent> gy <Plug>(coc-type-definition)
+        nmap <silent> gi <Plug>(coc-implementation)
+        nmap <silent> gr <Plug>(coc-references)
+    '''
+    # <C-space> to start completion, <cr> to confirm
+    #[[plugins]]
+    #repo = 'Shougo/deoplete.nvim'
+    #hook_add='''
+        #if !has('nvim')
+          #call dein#add('roxma/nvim-yarp')
+          #call dein#add('roxma/vim-hug-neovim-rpc')
+        #endif
+        #let g:deoplete#enable_at_startup = 1
+    #'''
+# }
 
- "let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
- "let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
- "let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
-'''
+# snippet {
+    [[plugins]]
+    repo = 'Shougo/neosnippet'
+    hook_add='''
+        let g:neosnippet#snippets_directory = '~/.snip'
+        imap <C-k> <Plug>(neosnippet_expand_or_jump)
+        smap <C-k> <Plug>(neosnippet_expand_or_jump)
+        xmap <C-k> <Plug>(neosnippet_expand_target)
+        imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+            \ "\<Plug>(neosnippet_expand_or_jump)"
+            \: pumvisible() ? "\<C-n>" : "\<TAB>"
+        smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+            \ "\<Plug>(neosnippet_expand_or_jump)": "\<TAB>"
+    '''
 
-[[plugins]]
-repo = 'Shougo/neosnippet'
-hook_add='''
-  let g:neosnippet#snippets_directory = '~/.snip'
-  imap <C-k> <Plug>(neosnippet_expand_or_jump)
-  smap <C-k> <Plug>(neosnippet_expand_or_jump)
-  xmap <C-k> <Plug>(neosnippet_expand_target)
-  imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-      \ "\<Plug>(neosnippet_expand_or_jump)"
-      \: pumvisible() ? "\<C-n>" : "\<TAB>"
-  smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-      \ "\<Plug>(neosnippet_expand_or_jump)": "\<TAB>"
-'''
+    [[plugins]]
+    repo = 'Shougo/neosnippet-snippets'
+# }
 
-[[plugins]]
-repo = 'kannokanno/previm'
-on_ft = 'markdown'
-hook_add = '''
-  let g:vim_markdown_folding_disabled = 1
-  let g:previm_show_header = 0
-  nnoremap <silent> <C-s> :PrevimOpen<CR>
-'''
+# colorscheme {
+    [[plugins]]
+    repo = 'w0ng/vim-hybrid'
+    hook_add = '''
+        set t_Co=256
+        syntax enable
+        set background=dark
+        au reset_au_group VimEnter * nested colorscheme hybrid
+    '''
+# }
 
-[[plugins]]
-repo = 'scrooloose/nerdcommenter'
-hook_add = '''
-  let NERDSpaceDelims = 1
-'''
+# syntax_highlighting {
+    [[plugins]]
+    repo = 'cespare/vim-toml'
+    on_ft = 'toml'
+    [[plugins]]
+    repo = 'plasticboy/vim-markdown'
+    on_ft = 'markdown'
+    [[plugins]]
+    repo = 'aklt/plantuml-syntax'
+    on_ft = 'plantuml'
+# }
 
-[[plugins]]
-repo = 'mattn/emmet-vim'
-on_ft = ['html', 'css']
-hook_add = '''
-  let g:user_emmet_expandabbr_key = '<C-y>'
-'''
+# markdown_preview {
+    [[plugins]]
+    repo = 'kannokanno/previm'
+    on_ft = 'markdown'
+    hook_add = '''
+        let g:vim_markdown_folding_disabled = 1
+        let g:previm_show_header = 0
+        nnoremap <silent> <C-s> :PrevimOpen<CR>
+    '''
+    [[plugins]]
+    repo = 'tyru/open-browser.vim'
+# }
 
-# [[plugins]]
-# repo = 'scrooloose/syntastic'
-# hook_add = '''
-#   "let g:syntastic_javascript_checkers=['eslint']
-# '''
+# python {
+    [[plugins]]
+    repo = 'davidhalter/jedi-vim'
+    on_ft = 'python'
+    hook_add = '''
+        let g:jedi#completions_command="<C-L>"
+        let g:jedi#popup_on_dot=0
+        let g:jedi#popup_select_first=0
+        autocmd FileType python setlocal completeopt-=preview
+    '''
+# }
 
-[[plugins]]
-repo = 'tpope/vim-fugitive'
-hook_add = '''
-  set diffopt+=vertical
+# javascript {
+    [[plugins]]
+    repo = 'yuezk/vim-js'
+    on_ft = 'javascript'
 
-  nnoremap [fugitive] <Nop>
-  nmap <Space>g [fugitive]
+    [[plugins]]
+    repo = 'maxmellon/vim-jsx-pretty'
+    on_ft = 'jsx'
 
-  nnoremap <silent> [fugitive]s :<C-u>Gstatus<CR>
-  nnoremap <silent> [fugitive]w :<C-u>Gwrite<CR>
-  nnoremap <silent> [fugitive]r :<C-u>Gread<CR>
-  nnoremap <silent> [fugitive]d :<C-u>Gdiff<CR>
-  nnoremap <silent> [fugitive]c :<C-u>Gcommit<CR>
-  nnoremap <silent> [fugitive]b :<C-u>Gblame<CR>
-'''
+    [[plugins]]
+    repo = 'leafgarland/typescript-vim'
+    on_ft = 'typescript'
+# }
 
-[[plugins]]
-repo = 'junegunn/vim-easy-align'
-hook_add = '''
-  vmap <CR> <Plug>(EasyAlign)
-  xmap ga <Plug>(EasyAlign)
-  nmap ga <Plug>(EasyAlign)
-'''
+# flutter_dart {
+    [[plugins]]
+    repo = 'dart-lang/dart-vim-plugin'
+    [[plugins]]
+    repo = 'thosakwe/vim-flutter'
+    hook_add='''
+        nnoremap <leader>fa :FlutterRun<cr>
+        nnoremap <leader>fq :FlutterQuit<cr>
+        nnoremap <leader>fr :FlutterHotReload<cr>
+        nnoremap <leader>fR :FlutterHotRestart<cr>
+    '''
+    # [[plugins]]
+    # repo = 'natebosch/vim-lsc'
+    # hook_add='''
+        # let g:lsc_auto_map = v:true
+    # '''
+    # [[plugins]]
+    # repo = 'natebosch/vim-lsc-dart'
+# }
 
-[[plugins]]
-repo = 'davidhalter/jedi-vim'
-on_ft = 'python'
-hook_add = '''
-  let g:jedi#completions_command="<C-L>"
-  let g:jedi#popup_on_dot=0
-  let g:jedi#popup_select_first=0
-  autocmd FileType python setlocal completeopt-=preview
-'''
-
-[[plugins]]
-repo = 'w0ng/vim-hybrid'
-hook_add = '''
-  set t_Co=256
-  syntax enable
-  set background=dark
-  au reset_au_group VimEnter * nested colorscheme hybrid
-'''
-
+# swift {
+    [[plugins]]
+    repo = 'kballard/vim-swift'
+    #[[plugins]]
+    #repo = 'landaire/deoplete-swift'
+    #hook_add='''
+        #let g:deoplete#sources#swift#daemon_autostart = 1
+    #'''
+# }
